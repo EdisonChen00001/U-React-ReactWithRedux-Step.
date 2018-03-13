@@ -1,7 +1,7 @@
 
 import React,{Component} from 'react';
 import { connect } from 'react-redux';      //glue is between react and redux
-
+import selectKeys from '../actions/index';
 
 
 class KeyList extends Component{
@@ -9,7 +9,13 @@ class KeyList extends Component{
 
         return this.props.searchkeys.map((searchkey)=>{
             return(
-                <li key={searchkey.sKey} className = "list-group-item">{searchkey.sKey}</li>
+                <li 
+                    key = {searchkey.sKey} 
+                    onClick = {() => this.props.selectKeys(key)}
+                    className = "list-group-item"
+                >
+                {searchkey.sKey}
+                </li>
             );
         });
 
@@ -33,5 +39,9 @@ function mapStateToProps(state){
 }
 
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({selectKey:selectKey}, dispatch);
+}
 
-export default connect(mapStateToProps)(KeyList);
+
+export default connect(mapStateToProps, )(KeyList);
