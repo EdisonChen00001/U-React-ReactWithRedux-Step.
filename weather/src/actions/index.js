@@ -8,8 +8,9 @@ export const FETCH_WEATHER = "FETCH_WEATHER";
 export function fetchWeather(city){
 
     const url = `${ROOT_URL}&q=${city},US`; //this US can be change any country simple code 
-
     const request = axios.get(url);
+
+    console.log('Request: this is come from action creater--->', request);
 
     return{
         type:FETCH_WEATHER,
